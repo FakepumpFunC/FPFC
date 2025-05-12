@@ -12,7 +12,7 @@ import './App.css'
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
-import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets'
+import { SolflareWalletAdapter } from '@solana/wallet-adapter-wallets'
 
 // Add console log to verify imports
 console.log('App component loaded', { RecordsPage });
@@ -73,7 +73,6 @@ function App() {
 
   // Memoize the list of wallet adapters to support
   const wallets = useMemo(() => [
-    new PhantomWalletAdapter(), // Phantom wallet
     new SolflareWalletAdapter(), // Solflare wallet
     // Add more wallets here if needed
   ], [network]);
