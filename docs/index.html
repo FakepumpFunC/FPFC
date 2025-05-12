@@ -39,5 +39,17 @@
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- GitHub Pages SPA路由支持脚本 -->
+    <script>
+      // 仅在直接导航到页面时运行，不在初始加载index.html时运行
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </body>
 </html>
