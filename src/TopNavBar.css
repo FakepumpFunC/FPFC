@@ -168,6 +168,25 @@
   color: #5cb85c; /* Green text */
 }
 
+/* Add styling for connecting state */
+.connect-wallet-btn.connecting {
+  background-color: #666;
+  cursor: not-allowed;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
 .btn-icon {
   width: 18px;
   height: 18px;

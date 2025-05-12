@@ -11,6 +11,7 @@ import { useWalletModal } from '@solana/wallet-adapter-react-ui'; // Hook for wa
 function TopNavBar({ showPixelDialog, showDonateModal }) {
   const playerName = "PixelPunter";
   const [rugDevSolBalance, setRugDevSolBalance] = useState("0.00");
+  const [connecting, setConnecting] = useState(false);
 
   // Initialize balance from global state and subscribe to changes
   useEffect(() => {
@@ -35,7 +36,14 @@ function TopNavBar({ showPixelDialog, showDonateModal }) {
 
   // Get wallet state and modal controls from Solana wallet adapter
   const { publicKey, connected, disconnect } = useWallet(); // Wallet state and disconnect function
-  const { setVisible } = useWalletModal(); // Function to open wallet modal
+  const { setVisible, visible } = useWalletModal(); // Function to open wallet modal and check if it's open
+
+  // Reset connecting state when wallet status changes
+  useEffect(() => {
+    if (connected || !visible) {
+      setConnecting(false);
+    }
+  }, [connected, visible]);
 
   // Helper function to truncate the wallet address for display
   const getTruncatedAddress = (address) => {
@@ -70,6 +78,7 @@ function TopNavBar({ showPixelDialog, showDonateModal }) {
     if (connected) {
       disconnect(); // Disconnect wallet if already connected
     } else {
+      setConnecting(true); // Set connecting state
       setVisible(true); // Open wallet modal if not connected
       console.log('Opening wallet modal'); // Add debug log
     }
@@ -128,11 +137,17 @@ function TopNavBar({ showPixelDialog, showDonateModal }) {
           />
         </button>
         <button 
-          className={`connect-wallet-btn${connected ? ' connected' : ''}`} 
+          className={`connect-wallet-btn${connected ? ' connected' : ''}${connecting ? ' connecting' : ''}`} 
           onClick={handleConnectWallet}
+          disabled={connecting}
         >
           <WalletIcon className="nav-icon btn-icon" />
-          {connected && publicKey ? 'Disconnect' : 'Connect Wallet'}
+          {connected && publicKey 
+            ? 'Disconnect' 
+            : connecting 
+              ? 'Connecting...' 
+              : 'Connect Wallet'
+          }
         </button>
       </div>
     </nav>

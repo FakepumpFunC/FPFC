@@ -15,6 +15,8 @@ import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
 import { 
   SolflareWalletAdapter,
   TorusWalletAdapter,
+  PhantomWalletAdapter,
+  LedgerWalletAdapter
 } from '@solana/wallet-adapter-wallets'
 
 // Add console log to verify imports
@@ -76,9 +78,11 @@ function App() {
 
   // Memoize the list of wallet adapters to support
   const wallets = useMemo(() => [
-    // 不要添加PhantomWalletAdapter，因为它已经被注册为标准钱包
+    // Add stable wallet adapters that are confirmed to work
+    new PhantomWalletAdapter(),
     new SolflareWalletAdapter(),
     new TorusWalletAdapter(),
+    new LedgerWalletAdapter()
   ], [network]);
 
   return (
