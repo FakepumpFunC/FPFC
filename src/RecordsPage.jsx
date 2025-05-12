@@ -125,7 +125,17 @@ function RecordsPage({ showPixelDialog }) {
         <h1 className="records-title">Trading Records</h1>
         <button 
           className="back-button back-image-button"
-          onClick={() => navigate('/home')}
+          onClick={() => {
+            console.log('Navigating back to home');
+            // 先尝试React Router导航
+            try {
+              navigate('/home');
+            } catch (e) {
+              console.error('Navigate error:', e);
+              // 如果React Router导航失败，使用硬导航作为后备方案
+              window.location.href = '/home';
+            }
+          }}
         >
           <img src="/assets/Back.png" alt="Back to Home" className="back-home-image" />
         </button>

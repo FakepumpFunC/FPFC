@@ -95,10 +95,20 @@ function App() {
               <Routes>
                 <Route path="/" element={hasEntered ? <Navigate to="/home" replace /> : <TitlePage />} />
                 <Route path="/home" element={<HomePage showPixelDialog={showPixelDialog} />} />
+                <Route path="/home/*" element={<HomePage showPixelDialog={showPixelDialog} />} />
                 <Route path="/trading/:contractAddress" element={<TradingPage showPixelDialog={showPixelDialog} />} />
                 <Route path="/trading" element={<TradingPage showPixelDialog={showPixelDialog} />} />
+                <Route path="/trading/*" element={<TradingPage showPixelDialog={showPixelDialog} />} />
                 <Route 
                   path="/records" 
+                  element={
+                    <Suspense fallback={<div>Loading Records...</div>}>
+                      <RecordsPage showPixelDialog={showPixelDialog} />
+                    </Suspense>
+                  } 
+                />
+                <Route 
+                  path="/records/*" 
                   element={
                     <Suspense fallback={<div>Loading Records...</div>}>
                       <RecordsPage showPixelDialog={showPixelDialog} />

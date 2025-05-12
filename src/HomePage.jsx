@@ -359,7 +359,14 @@ function HomePage({ showPixelDialog }) {
             className="panel-button" 
             onClick={() => {
               console.log('Navigating to full history');
-              navigate('/records');
+              // 先尝试React Router导航
+              try {
+                navigate('/records');
+              } catch (e) {
+                console.error('Navigate error:', e);
+                // 如果React Router导航失败，使用硬导航作为后备方案
+                window.location.href = '/records';
+              }
             }}
           >
             View Full History
