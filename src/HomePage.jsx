@@ -359,8 +359,7 @@ function HomePage({ showPixelDialog }) {
             className="panel-button" 
             onClick={() => {
               console.log('Navigating to full history');
-              // Use a direct href instead of navigate to ensure the navigation happens
-              window.location.href = '/records';
+              navigate('/records');
             }}
           >
             View Full History
