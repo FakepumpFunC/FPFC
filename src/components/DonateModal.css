@@ -1,0 +1,246 @@
+.donate-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.donate-modal-box {
+  background-color: #222233;
+  border: 3px solid #ffffff;
+  box-shadow: 5px 5px 0px #000000;
+  padding: 24px;
+  width: 90%;
+  max-width: 450px;
+  color: #ffffff;
+  font-family: 'VT323', 'Press Start 2P', monospace;
+  position: relative;
+  animation: modal-appear 0.3s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.donate-modal-title {
+  text-align: center;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  font-size: 28px;
+  color: #5cb85c;
+  border-bottom: 2px solid #333344;
+  text-shadow: 2px 2px 0px #000000;
+}
+
+.donate-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.donate-modal-text {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.donate-rate {
+  background-color: #333344;
+  padding: 12px;
+  border: 2px solid #444455;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donate-rate-value {
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.donate-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.donate-input-group label {
+  font-size: 16px;
+}
+
+.donate-input {
+  background-color: #333344;
+  border: 2px solid #444455;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-family: 'VT323', 'Press Start 2P', monospace;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.donate-input:focus {
+  outline: none;
+  border-color: #5cb85c;
+}
+
+/* Quick Donate Buttons */
+.quick-donate-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  justify-content: space-between;
+}
+
+.quick-donate-button {
+  padding: 6px 10px;
+  font-family: 'VT323', 'Press Start 2P', monospace;
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid #000000;
+  background-color: #4a7c8f;
+  color: #ffffff;
+  box-shadow: 2px 2px 0px #000000;
+  transition: transform 0.1s, box-shadow 0.1s;
+  flex: 1;
+  text-align: center;
+}
+
+.quick-donate-button:hover {
+  background-color: #5a8ca0;
+}
+
+.quick-donate-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.donate-result {
+  background-color: #1e2a1e;
+  padding: 12px;
+  border: 2px solid #2a3a2a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donate-result-value {
+  color: #5cb85c;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.donate-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.donate-button, .donate-cancel-button {
+  padding: 10px 20px;
+  font-family: 'VT323', 'Press Start 2P', monospace;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #000000;
+  background-color: #4a7c8f;
+  color: #ffffff;
+  box-shadow: 3px 3px 0px #000000;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.donate-button {
+  background-color: #5cb85c;
+}
+
+.donate-button:hover {
+  background-color: #6acd6a;
+}
+
+.donate-cancel-button:hover {
+  background-color: #5a8ca0;
+}
+
+.donate-button:active, .donate-cancel-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+/* Transaction Status Styles */
+.transaction-status {
+  text-align: center;
+  padding: 10px;
+  border: 2px solid;
+  margin-top: 10px;
+  font-size: 16px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.transaction-status.prompting_wallet {
+  background-color: #392f7b;
+  border-color: #5346ad;
+  color: #b3a6ff;
+}
+
+.transaction-status.sending,
+.transaction-status.confirming {
+  background-color: #2f4d7b;
+  border-color: #3a65ad;
+  color: #a6c9ff;
+}
+
+.transaction-status.success {
+  background-color: #2a5a2a;
+  border-color: #3a7a3a;
+  color: #90ee90;
+  animation: none;
+}
+
+.transaction-status.failed,
+.transaction-status.cancelled {
+  background-color: #5a2a2a;
+  border-color: #7a3a3a;
+  color: #ee9090;
+  animation: none;
+}
+
+/* Disabled Button Styles */
+.donate-button:disabled,
+.quick-donate-button:disabled {
+  background-color: #555555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.donate-button:disabled:hover,
+.quick-donate-button:disabled:hover {
+  background-color: #555555;
+  transform: none;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+.donate-input:disabled {
+  background-color: #444444;
+  cursor: not-allowed;
+  opacity: 0.7;
+} 

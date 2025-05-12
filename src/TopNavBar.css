@@ -1,0 +1,144 @@
+/* src/TopNavBar.css */
+.top-nav-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #10101a;
+  color: #e0e0e0;
+  font-family: 'Press Start 2P', cursive;
+  border-bottom: 2px solid #4f4f7f;
+  box-shadow: 0px 2px 0px #000000;
+  height: 60px;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.nav-section {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left {
+  justify-content: flex-start;
+  gap: 1.5rem;
+}
+
+.game-logo {
+  font-size: 1.1rem;
+  color: #f0a04b;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #000;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.game-logo:hover {
+  color: #f3b06b;
+}
+
+/* 添加logo图片样式 */
+.logo-image {
+  height: 40px; /* 控制Logo高度 */
+  width: auto; /* 保持宽高比 */
+  image-rendering: pixelated; /* 保持像素艺术风格 */
+  filter: drop-shadow(1px 1px 0px #000); /* 添加阴影效果 */
+  transition: transform 0.2s ease; /* 添加悬停动画效果 */
+}
+
+.game-logo:hover .logo-image {
+  transform: scale(1.05); /* 悬停时稍微放大 */
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+.player-info:hover {
+  background-color: #2a2a3e;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+}
+
+.player-avatar {
+  color: #7f7fd5;
+}
+
+.player-name {
+  font-size: 0.8rem;
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.currency-icon {
+  color: #5cb85c;
+}
+
+.currency-balance {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #f0a04b;
+  white-space: nowrap;
+}
+
+.nav-right {
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+.connect-wallet-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: #4a7c8f;
+  color: #e0e0e0;
+  border: 2px solid #000000;
+  font-size: 0.8rem;
+  box-shadow: 2px 2px 0px #000000;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.connect-wallet-btn:hover {
+  background-color: #5a9cb0;
+}
+.connect-wallet-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+/* Style for the connect wallet button when connected */
+.connect-wallet-btn.connected {
+  border: 2px solid #5cb85c; /* Green border to indicate connection */
+  background-color: #232e1e; /* Slightly green-tinted background */
+  color: #5cb85c; /* Green text */
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+} 

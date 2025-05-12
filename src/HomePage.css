@@ -1,0 +1,1370 @@
+/* src/HomePage.css */
+.homepage-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center main content and bottom sections */
+  width: 100%; /* Wrapper takes full width */
+  gap: 2rem;
+  padding: 1rem 0; /* Keep vertical padding, ensure no horizontal padding pushing out */
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Custom background for the homepage - now set via JS in HomePage.jsx */
+.homepage-layout-wrapper::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 背景图现在通过JS设置在body元素上 */
+  background-image: none;
+  z-index: -1; /* Place it behind all content */
+  pointer-events: none; /* Allow interaction with elements on top */
+}
+
+/* Override the default gradient and silhouette styles for the home page specifically */
+/* Using a class-based approach rather than :has() for better browser compatibility */
+.homepage-body-background {
+  background: none !important;
+}
+
+.homepage-body-background::before,
+.homepage-body-background::after {
+  display: none !important;
+}
+
+/* Enhance contrast for content on the homepage */
+.homepage-container.main-content {
+  background-color: rgba(26, 26, 46, 0.85); /* Semi-transparent dark background */
+  border: 2px solid #4f4f7f;
+  border-radius: 4px;
+  padding: 1.5rem;
+  -webkit-backdrop-filter: blur(3px); /* 增加模糊效果 */
+  backdrop-filter: blur(3px); /* 增加模糊效果增强可读性 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* 加深阴影 */
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 70px; /* 确保在顶部导航栏下方显示 */
+}
+
+/* Make sure sidebar panels stand out against the background */
+.bottom-panel {
+  background-color: rgba(42, 42, 62, 0.9); /* 更高的不透明度 */
+  border: 3px solid #4f4f7f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* 加深阴影 */
+  -webkit-backdrop-filter: blur(3px); /* 增加模糊效果 */
+  backdrop-filter: blur(3px); /* 增加模糊效果 */
+}
+
+/* Remove default city silhouette styles from the homepage */
+.homepage-layout-wrapper::after {
+  /* City silhouette styles moved to index.css, removed here */
+  display: none;
+}
+
+/* Add building windows effect */
+.homepage-layout-wrapper::before {
+  /* Building windows effect styles moved to index.css, removed here */
+  display: none;
+}
+
+/* --- UPDATED: Styles for Side Panels (replacing .side-decoration) --- */
+.side-panel {
+   flex: 0 0 220px; /* Flex-grow: 0, flex-shrink: 0, basis: 220px. Giving it a fixed basis for consistency. Adjust size as needed. */
+   min-width: 180px; /* Min-width can still apply */
+   max-width: 250px; /* Max-width can still apply */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem; /* Gap between panels if multiple or internal gap */
+   padding-top: 1.5rem; /* Top padding */
+   /* opacity removed or set to 1 for clear view */
+   /* opacity: 1; */
+
+    /* Add some visual flair to the panel itself */
+   background-color: #2a2a3e; /* Panel background */
+   border: 3px solid #4f4f7f; /* Panel border */
+   box-shadow: 3px 3px 0px #1a1a2e; /* Panel shadow */
+   padding: 1.5rem 1rem; /* Internal panel padding */
+   box-sizing: border-box;
+}
+
+.left-panel {
+  left: 1rem;
+  bottom: 1rem;
+}
+
+.left-panel .panel-title {
+  padding-bottom: 0.6rem;
+  padding-top: 0.3rem;
+  border: none;
+  text-align: center;
+  display: block;
+  margin-bottom: 1rem;
+  min-height: 60px;
+}
+
+/* This is to ensure the logo in the left panel fits well */
+.left-panel .panel-title-logo {
+  max-height: 58px;
+}
+
+.right-panel {
+  /* align-items: flex-start; /* Adjust alignment of panel *within* the aside */
+}
+
+
+.panel-title {
+    font-size: 0.9rem;
+    color: #c0c0e0;
+    text-shadow: 1px 1px 0px #000;
+    margin-bottom: 0.75rem;
+    border-bottom: 2px dashed #3a3a5a;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-title-icon {
+    width: 18px;
+    height: 18px;
+    color: #7f7fd5;
+}
+
+.panel-title-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 50px; /* Increased from 28px */
+    image-rendering: pixelated;
+    display: block;
+    margin: 0 auto;
+    padding: 0; /* Removed the bottom padding */
+}
+
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.stat-item, .holding-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.7rem;
+    color: #b0b0d0;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px dotted #3a3a5a;
+}
+
+.holding-item.total-value {
+    margin-top: 0.5rem;
+    border-top: 1px solid #3a3a5a;
+    padding-top: 0.5rem;
+    font-weight: bold;
+}
+
+.stat-label, .indicator-label, .holding-label {
+    font-weight: bold;
+}
+
+.stat-value, .indicator-value, .holding-value, .holding-value-usd {
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.green {
+    color: #5cb85c !important;
+}
+
+.red {
+    color: #d9534f !important;
+}
+
+.orange {
+    color: #f0a04b !important;
+}
+
+/* Style scrollbars for the buy history list */
+.buy-history-list::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.buy-history-list::-webkit-scrollbar-track {
+  background-color: #2a2a3e;
+  border-left: 2px solid #4f4f7f;
+  /* Pixel pattern for track */
+  background-image: 
+    linear-gradient(to bottom, #3a3a5a 2px, transparent 2px),
+    linear-gradient(to bottom, #3a3a5a 2px, transparent 2px);
+  background-size: 4px 8px;
+  background-position: 0 0, 4px 4px;
+  image-rendering: pixelated;
+}
+
+.buy-history-list::-webkit-scrollbar-thumb {
+  background-color: #f0a04b;
+  border: 2px solid #2a2a3e;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  /* Pixel pattern for thumb */
+  background-image: 
+    linear-gradient(45deg, #ff9248 25%, transparent 25%),
+    linear-gradient(-45deg, #ff9248 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ff9248 75%),
+    linear-gradient(-45deg, transparent 75%, #ff9248 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  image-rendering: pixelated;
+}
+
+.buy-history-list::-webkit-scrollbar-thumb:hover {
+  background-color: #ff9248;
+}
+
+.buy-history-list::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Buy history item styling */
+.buy-history-item {
+    display: flex;
+    font-size: 0.65rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px dotted #3a3a5a;
+    justify-content: space-between;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    width: 100%;
+}
+
+/* No trades message styling */
+.no-trades-message {
+    font-size: 0.8rem;
+    color: #b0b0d0;
+    text-align: center;
+    padding: 1.5rem 0;
+    width: 100%;
+    border: 2px dashed #3a3a5a;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    background-color: rgba(42, 42, 62, 0.5);
+    /* Pixel art style decorations */
+    box-shadow: inset 2px 2px 0px #1a1a2e, inset -2px -2px 0px #4f4f7f;
+    image-rendering: pixelated;
+}
+
+/* History item column widths */
+.history-time {
+    color: #7f7fd5;
+    width: 18%;
+    min-width: 30px;
+}
+
+.history-action {
+    color: #5cb85c;
+    width: 12%;
+    min-width: 25px;
+}
+
+.history-amount {
+    color: #e0e0e0;
+    width: 25%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-token {
+    color: #a0a0c0;
+    width: 18%;
+    min-width: 35px;
+}
+
+.history-price {
+    color: #f0a04b;
+    width: 22%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Panel button styling */
+.panel-button {
+    background-color: #4a7c8f;
+    color: #e0e0e0;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    margin-top: 0.5rem;
+    align-self: center;
+}
+
+/* Additional mobile styling */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 1.5rem;
+    }
+    
+    .game-subtitle {
+        font-size: 0.75rem;
+    }
+    
+    .homepage-container.main-content {
+        max-width: 95%;
+    }
+}
+
+/* Ensure the main content container is centered and takes appropriate space */
+.homepage-container.main-content {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   gap: 2rem;
+   padding: 1.5rem;
+   border: 4px solid #4f4f7f;
+   background-color: #2c2c44;
+   box-shadow: 4px 4px 0px #000000;
+   max-width: 850px;
+   z-index: 10;
+   flex-shrink: 0;
+   width: calc(100% - 2rem); /* Ensure it has some margin on the sides */
+   box-sizing: border-box;
+   margin: 0 auto;
+}
+
+.homepage-header {
+  margin-bottom: 1rem;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  color: #f0a04b;
+  text-shadow: 3px 3px 0px #1a1a2e;
+  text-align: center;
+  font-family: 'Press Start 2P', 'Pixel', monospace;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 120px;
+  image-rendering: pixelated;
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(3px 3px 0px #1a1a2e);
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    max-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo {
+    max-height: 80px;
+  }
+}
+
+.game-title span {
+  vertical-align: middle;
+}
+
+.game-subtitle {
+  font-size: 0.9rem;
+  color: #a0a0c0;
+  max-width: 80%;
+  margin: 0 auto 1.5rem auto;
+}
+
+.section-title, .info-title {
+  font-size: 1.2rem;
+  color: #c0c0e0;
+  text-shadow: 1px 1px 0px #000000;
+  margin-bottom: 1rem;
+}
+
+.input-section, .info-section {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #2a2a3e;
+  border: 2px solid #4f4f7f;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+}
+
+.input-group input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.start-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+}
+
+.beam-button-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 70px; /* 增加高度 */
+  image-rendering: pixelated;
+  display: block;
+  margin: 0 auto;
+}
+
+.instructions-list {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.instructions-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #a0a0c0;
+}
+
+.instructions-list li span {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* --- EXISTING Featured Tokens Section Styles --- */
+/* Remove the .featured-tokens-section styles and add styles for .current-holdings-section */
+.current-holdings-section {
+  width: 100%;
+  border: 3px solid #4a4a6f;
+  background-color: #2a2a3e;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 0px #1a1a2e;
+}
+
+.no-holdings-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  color: #a0a0c0;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 2px dashed #3a3a5a;
+  border-radius: 3px;
+  background-color: #22223a;
+  margin: 0.5rem 0;
+}
+
+.holdings-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holding-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border: 2px solid #3a3a5a;
+  background-color: #22223a;
+  border-radius: 3px;
+  transition: border-color 0.2s;
+}
+
+.holding-list-item:hover {
+  border-color: #5a5a8f;
+}
+
+.holding-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.holding-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.holding-address {
+  font-weight: bold;
+  color: #d0d0e0;
+  font-size: 0.9rem;
+}
+
+.holding-amount {
+  color: #a0a0c0;
+  font-size: 0.8rem;
+}
+
+.holding-cost {
+  color: #f0a04b;
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
+.holding-values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
+.holding-value-cost {
+  font-size: 0.65rem;
+  color: #f0a04b;
+  font-style: italic;
+}
+
+.holding-trade-button {
+  background-color: #4a7c8f;
+  color: #e0e0e0;
+  border: 2px solid #3a6c7f;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #1a1a2e;
+  transition: all 0.2s;
+}
+
+.holding-trade-button:hover {
+  background-color: #5a8c9f;
+  transform: translateY(-1px);
+}
+
+.holding-trade-button:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px #1a1a2e;
+}
+
+/* --- Homepage nav and footer --- */
+.homepage-nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.nav-button {
+  background-color: #3a3a5a;
+}
+
+.nav-button:hover {
+  background-color: #4a4a7a;
+}
+
+/* Homepage footer */
+.homepage-footer {
+  margin-top: 1rem;
+  padding: 1rem 0;
+  font-size: 0.6rem;
+  color: #7f7fd5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Devtool reset button styling */
+.devtool-button {
+  background-color: #d9534f;
+  color: #e0e0e0;
+  font-size: 0.7rem;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid #c9433f;
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #1a1a2e;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+  image-rendering: pixelated;
+  text-shadow: 1px 1px 0px #000;
+}
+
+.devtool-button:hover {
+  background-color: #f9635f;
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 0px #1a1a2e;
+}
+
+.devtool-button:active {
+  background-color: #b94441;
+  transform: translateY(1px);
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+/* UPDATED: Styles for pixel arrow shapes - replace icon */
+.pixel-arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid #f0a04b;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+}
+.pixel-arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 25px solid #5cb85c;
+   filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+}
+
+/* Existing .deco-icon, .deco-icon.large-icon - maybe remove if replaced by pixel shapes */
+/* .deco-icon { display: none; } */ /* Hide original icons if using pixel shapes */
+/* .deco-icon.large-icon { display: none; } */
+
+/* --- NEW: Styles for Featured Tokens Section --- */
+/* Remove old token list styles */
+/* Remove these styles:
+.featured-tokens-section {
+  ...
+}
+.featured-tokens-list {
+  ...
+}
+.token-list-item {
+  ...
+}
+.token-info {
+  ...
+}
+.token-name {
+  ...
+}
+.token-symbol {
+  ...
+}
+.token-price {
+  ...
+}
+.trade-button {
+  ...
+}
+*/
+
+/* --- NEW: Styles for Decorative Panels --- */
+.deco-panel {
+    width: 100%; /* Panels take full width of side-decoration container */
+    padding: 1rem;
+    background-color: #2a2a3e; /* Panel background color */
+    border: 2px solid #4f4f7f; /* Pixel border */
+    box-shadow: 2px 2px 0px #1a1a2e; /* Panel shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content within panel */
+    gap: 0.75rem; /* Space between panel elements */
+    margin-bottom: 1rem; /* Space between panels if multiple */
+}
+
+.panel-title {
+    font-size: 1rem;
+    color: #f0a04b; /* Theme color */
+    text-shadow: 1px 1px 0px #000;
+    margin-bottom: 0.5rem;
+}
+
+/* Styles for the pixel trend graphics (using CSS shapes or simple blocks) */
+.pixel-trend-up {
+    width: 40px; /* Base size */
+    height: 30px; /* Base size */
+    border-bottom: 5px solid #5cb85c; /* Horizontal base line */
+    border-left: 5px solid transparent; /* To create triangle/step effect */
+    border-right: 5px solid transparent;
+    margin-bottom: 0.5rem;
+    background:
+        linear-gradient(to top left, #5cb85c 50%, transparent 50%) 0 0 / 5px 5px no-repeat, /* Steps example */
+        linear-gradient(to bottom right, #5cb85c 50%, transparent 50%) 100% 100% / 5px 5px no-repeat;
+    /* This is a very simplified placeholder. Actual pixel art graphic would be better. */
+    /* A more realistic pixel line example: */
+     background: linear-gradient(to top right, transparent 48%, #5cb85c 48%, #5cb85c 52%, transparent 52%) 0 100% / 5px 20px no-repeat,
+                 linear-gradient(to top right, transparent 48%, #5cb85c 48%, #5cb85c 52%, transparent 52%) 5px 50% / 5px 20px no-repeat,
+                 linear-gradient(to top right, transparent 48%, #5cb85c 48%, #5cb85c 52%, transparent 52%) 10px 0% / 5px 20px no-repeat;
+     background-size: 10px 30px; /* Control density */
+     background-repeat: no-repeat;
+     background-position: 0 100%, 10px 50%, 20px 0%; /* Position steps */
+     height: 30px; /* Actual height of steps */
+     width: 30px; /* Actual width of steps */
+     border: none; /* Remove border if using background steps */
+}
+
+.pixel-trend-down {
+     width: 40px; /* Base size */
+     height: 30px; /* Base size */
+     border-top: 5px solid #f0a04b; /* Horizontal base line - using orange for drop */
+     border-left: 5px solid transparent;
+     border-right: 5px solid transparent;
+     margin-bottom: 0.5rem;
+     /* A more realistic pixel line example (reversed): */
+     background: linear-gradient(to bottom right, transparent 48%, #f0a04b 48%, #f0a04b 52%, transparent 52%) 0 0 / 5px 20px no-repeat,
+                 linear-gradient(to bottom right, transparent 48%, #f0a04b 48%, #f0a04b 52%, transparent 52%) 5px 50% / 5px 20px no-repeat,
+                 linear-gradient(to bottom right, transparent 48%, #f0a04b 48%, #f0a04b 52%, transparent 52%) 10px 100% / 5px 20px no-repeat;
+     background-size: 10px 30px; /* Control density */
+     background-repeat: no-repeat;
+     background-position: 0 0%, 10px 50%, 20px 100%; /* Position steps */
+     height: 30px; /* Actual height of steps */
+     width: 30px; /* Actual width of steps */
+     border: none; /* Remove border if using background steps */
+}
+
+.panel-metric {
+    font-size: 0.8rem;
+    color: #c0c0e0;
+    display: flex;
+    flex-direction: column; /* Stack label and value */
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.metric-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #5cb85c; /* Green for HIGH/GOOD signs */
+}
+
+.down-panel .metric-value {
+    color: #f0a04b; /* Orange for MEDIUM/HIGH risks */
+}
+
+/* --- UPDATED: Styles for bottom sections wrapper --- */
+.bottom-sections-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%; /* Takes full width of homepage-layout-wrapper */
+    max-width: 1200px; /* Allows spreading on wide screens */
+    gap: 2rem;
+    /* Review horizontal padding here */
+    padding: 0 1.5rem; /* Horizontal padding on this container */
+    box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+    .bottom-sections-wrapper {
+        flex-direction: column; align-items: center; gap: 1.5rem;
+        padding: 1rem; /* Adjusted padding for smaller screens */
+    }
+}
+
+.bottom-right-area-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 22%;
+    min-width: 220px;
+    max-width: 320px;
+    z-index: 25;
+    height: 90vh; /* Give enough height for both panels */
+    pointer-events: none; /* Let clicks pass through to panels */
+}
+
+@media (max-width: 1024px) {
+    .bottom-right-area-container {
+        width: 100%;
+        max-width: 850px;
+        min-width: auto;
+        align-items: center;
+    }
+}
+
+/* Left panel (Player Stats) - Fixed position */
+.left-panel {
+    position: fixed !important;
+    left: 1rem !important;
+    bottom: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 8px 0 0;
+    border-left: none;
+    border-bottom: none;
+    z-index: 1000;
+}
+
+/* Bottom Right Panels Container - Fixed position */
+.bottom-right-panels-container {
+    position: fixed !important;
+    right: 16px !important; /* 确保为滚动条预留空间 */
+    bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0 !important;
+    width: auto;
+    max-width: 350px;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* Market panel styles */
+.market-panel {
+    border-radius: 8px 0 0 0;
+    border-right: none;
+    border-bottom: 1px solid #4f4f7f;
+    margin: 0 !important;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Recent trades panel styles */
+.recent-trades-panel {
+    border-radius: 0;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+    margin: 0 !important;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Ensure trade list items don't overflow */
+.trade-list-item {
+    display: flex; justify-content: space-between;
+    gap: 0.5rem; /* Check this gap doesn't cause overflow if items wrap tightly */
+    padding: 0.4rem 0; border-bottom: 1px dotted #3a3a5a; color: #b0b0d0;
+    width: 100%; /* Ensure list items take full width of parent */
+    box-sizing: border-box; /* Added */
+}
+
+/* Mobile styles adjustments */
+@media (max-width: 1024px) {
+    .bottom-right-panels-container {
+        right: 0 !important; /* On mobile, don't reserve space for scrollbar */
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .market-panel, .recent-trades-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* 修正滚动条位置 - 确保内容不被滚动条挡住 */
+@media screen and (min-width: 1025px) {
+    .homepage-layout-wrapper {
+        padding-right: 16px; /* 为滚动条预留空间 */
+    }
+}
+
+.bottom-panel {
+   /* Ensure panels themselves do not overflow due to padding/border if their basis/width is set */
+   flex: 0 0 220px; min-width: 180px; max-width: 250px;
+   display: flex; flex-direction: column; align-items: center; gap: 1rem;
+   background-color: #2a2a3e; border: 3px solid #4f4f7f; box-shadow: 3px 3px 0px #1a1a2e;
+   padding: 1.5rem 1rem; /* Internal padding */
+   box-sizing: border-box;
+}
+
+.recent-trades-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   font-size: 0.75rem; /* Smaller font for trade list */
+   width: 100%; /* Take full width of container */
+   max-height: 150px;
+   overflow: hidden;
+}
+
+/* BOTTOM PANELS STYLING */
+
+/* Bottom panels container styles */
+.bottom-panel {
+  position: fixed;
+  width: 20%;
+  min-width: 200px;
+  max-width: 300px;
+  z-index: 20;
+  background-color: #2a2a3e;
+  border: 3px solid #4f4f7f;
+  box-shadow: 3px 3px 0px #1a1a2e;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: auto; /* Restore click events */
+}
+
+/* Left panel position */
+.left-panel {
+  left: 1rem;
+  bottom: 1rem;
+}
+
+/* Current holdings panel position - middle right side */
+.holdings-panel {
+  right: 1rem;
+  bottom: auto;
+  top: 40%; /* Position in the middle of the screen */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+/* Buy history panel updated to Recent Activity panel */
+.recent-activity-panel {
+  right: 1rem;
+  bottom: 1rem;
+  top: auto;
+  transform: none;
+  min-width: 320px; /* Even wider minimum width */
+  max-width: 420px; /* Even wider maximum width */
+  width: 30%; /* Slightly wider percentage */
+  padding: 1.2rem; /* More padding all around */
+}
+
+.recent-activity-panel .panel-title {
+  padding-bottom: 0.6rem;
+  padding-top: 0.3rem; /* Added top padding */
+  border: none;
+  text-align: center;
+  display: block;
+  margin-bottom: 1rem; /* Increased from 0.75rem */
+  min-height: 60px; /* Added minimum height to accommodate larger logo */
+}
+
+/* Recent trades list styling */
+.recent-trades-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* More gap between list items */
+  overflow-y: auto;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  max-height: 180px; /* Taller to accommodate the larger items */
+}
+
+/* Completely redesigned trade list item styling */
+.trade-list-item {
+  display: flex;
+  flex-direction: column; /* Always use multi-row layout */
+  padding: 0.8rem; /* Increase padding */
+  border: 1px solid #3a3a5a;
+  border-radius: 4px;
+  background-color: rgba(46, 46, 70, 0.6);
+  width: 100%;
+  gap: 0.7rem; /* Increase gap between rows */
+}
+
+/* Row with time and type */
+.trade-info-group.time-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Row with token amount - emphasized */
+.trade-info-group.token-amount {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(55, 55, 85, 0.6);
+  padding: 0.4rem 0.6rem;
+  border-radius: 3px;
+  border-left: 3px solid #7f7fd5;
+  width: 100%; /* Take full width */
+  overflow: visible; /* Ensure content isn't hidden */
+}
+
+/* Amount - make it very visible and ensure it's not truncated */
+.history-amount {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-right: 0.35rem;
+  overflow: visible;
+  white-space: normal; /* Allow wrapping if needed */
+  text-overflow: clip; /* Don't use ellipsis */
+  max-width: none; /* Don't restrict width */
+  word-break: break-all; /* Break within words if necessary */
+}
+
+/* Token name styling */
+.history-token {
+  color: #a0a0c0;
+  font-weight: bold;
+  flex-shrink: 0; /* Don't allow token name to shrink */
+}
+
+/* Price label */
+.history-price-label {
+  color: #a0a0c0;
+  font-size: 0.7rem;
+}
+
+/* Price styling */
+.history-price {
+  color: #f0a04b;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.history-value {
+  color: #e0e0e0;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.buy-action {
+  color: #121212;
+  background-color: rgba(92, 184, 92, 0.8); /* Green background for buy */
+}
+
+.sell-action {
+  color: #121212;
+  background-color: rgba(217, 83, 79, 0.8); /* Red background for sell */
+}
+
+/* Mobile optimizations for recent activity panel */
+@media (max-width: 768px) {
+  .recent-activity-panel {
+    position: static;
+    width: 95%;
+    max-width: 560px; /* Even wider on mobile for better readability */
+    margin: 0.5rem auto;
+  }
+  
+  .recent-trades-list {
+    max-height: 320px; /* Taller list on mobile to show more content */
+  }
+  
+  /* Ensure trade items have enough space on mobile */
+  .trade-list-item {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  
+  /* Make amount container full width on mobile */
+  .trade-info-group.token-amount {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  /* Give amount text more space on its own line */
+  .history-amount {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    width: 100%;
+    display: block;
+  }
+  
+  .history-token {
+    margin-left: 0; /* Reset on mobile */
+  }
+  
+  .trade-info-group.price-value {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .price-wrapper, .total-value-wrapper {
+    width: 100%;
+  }
+  
+  .total-value-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 400px) {
+  .trade-info-group.price-value {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .price-wrapper, .total-value-wrapper {
+    width: 100%;
+  }
+  
+  .total-value-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+.info-section .info-title {
+  color: #f0a04b;
+  text-align: center;
+  border-bottom: 2px dashed #4f4f7f;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.info-section .instructions-list {
+  padding: 0.5rem;
+}
+
+/* Row with price and value */
+.trade-info-group.price-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Price wrapper */
+.price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Total value wrapper */
+.total-value-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* History item column styling */
+.history-time {
+  color: #7f7fd5;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.history-action {
+  white-space: nowrap;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  min-width: 45px; /* Ensure consistent width */
+  text-align: center;
+}
+
+/* Amount label */
+.history-amount-label {
+  color: #a0a0c0;
+  font-size: 0.7rem;
+  flex-shrink: 0; /* Don't allow label to shrink */
+}
+
+/* Amount - make it very visible and ensure it's not truncated */
+.history-amount {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-right: 0.35rem;
+  overflow: visible;
+  white-space: normal; /* Allow wrapping if needed */
+  text-overflow: clip; /* Don't use ellipsis */
+  max-width: none; /* Don't restrict width */
+  word-break: break-all; /* Break within words if necessary */
+  min-width: 0; /* Allow the element to be smaller than content */
+  flex: 1; /* Take available space */
+}
+
+/* Token name styling */
+.history-token {
+  color: #a0a0c0;
+  font-weight: bold;
+  flex-shrink: 0; /* Don't allow token name to shrink */
+  margin-left: auto; /* Push to the right side */
+}
+
+/* Price label */
+.history-price-label {
+  color: #a0a0c0;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* Price styling */
+.history-price {
+  color: #f0a04b;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.history-value {
+  color: #e0e0e0;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.buy-action {
+  color: #121212;
+  background-color: rgba(92, 184, 92, 0.8); /* Green background for buy */
+}
+
+.sell-action {
+  color: #121212;
+  background-color: rgba(217, 83, 79, 0.8); /* Red background for sell */
+}
+
+/* Simplify the layout for mobile screens */
+@media (max-width: 768px) {
+  .recent-activity-panel {
+    position: static;
+    width: 95%;
+    max-width: 560px; /* Even wider on mobile for better readability */
+    margin: 0.5rem auto;
+  }
+  
+  .recent-trades-list {
+    max-height: 320px; /* Taller list on mobile to show more content */
+  }
+  
+  /* Ensure trade items have enough space on mobile */
+  .trade-list-item {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  
+  /* Make amount container full width on mobile */
+  .trade-info-group.token-amount {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  /* Give amount text more space on its own line */
+  .history-amount {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    width: 100%;
+    display: block;
+  }
+  
+  .history-token {
+    margin-left: 0; /* Reset on mobile */
+  }
+  
+  .trade-info-group.price-value {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .price-wrapper, .total-value-wrapper {
+    width: 100%;
+  }
+  
+  .total-value-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+.play-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.play-instructions-image {
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  margin: 0 auto;
+  display: block;
+}
+
+.load-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.load-token-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 75px;
+  image-rendering: pixelated;
+  margin: 0 auto;
+  display: block;
+}
+
+.holdings-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.current-holdings-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
+  image-rendering: pixelated;
+  margin: 0 auto;
+  display: block;
+}
+
+.master-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.master-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 180px; /* Increased from 100px */
+  image-rendering: pixelated;
+  margin: 0 auto;
+  display: block;
+} 

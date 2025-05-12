@@ -1,0 +1,67 @@
+/* ChartPriceSync.css - Pixel Art Styling */
+
+.chart-price-sync {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border: 2px solid;
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+.chart-price-sync.idle {
+  border-color: #4f4f7f;
+  background-color: rgba(79, 79, 127, 0.1);
+  color: #b0b0d0;
+}
+
+.chart-price-sync.syncing {
+  border-color: #f0a04b;
+  background-color: rgba(240, 160, 75, 0.1);
+  color: #f0a04b;
+  animation: pulse 1.5s infinite;
+}
+
+.chart-price-sync.success {
+  border-color: #5cb85c;
+  background-color: rgba(92, 184, 92, 0.1);
+  color: #5cb85c;
+}
+
+.chart-price-sync.error {
+  border-color: #d9534f;
+  background-color: rgba(217, 83, 79, 0.1);
+  color: #d9534f;
+}
+
+.sync-info {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.info-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.sync-label {
+  font-weight: bold;
+}
+
+.sync-status {
+  font-weight: bold;
+}
+
+.sync-time {
+  color: #b0b0d0;
+  font-style: italic;
+  margin-left: 0.3rem;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+} 

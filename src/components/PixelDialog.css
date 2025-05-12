@@ -1,0 +1,96 @@
+/* PixelDialog Component Styles */
+
+/* Overlay - covers the entire screen with a semi-transparent background */
+.pixel-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Pixelated rendering for crisp edges */
+  image-rendering: pixelated;
+}
+
+/* Dialog box with pixel art styling */
+.pixel-dialog-box {
+  width: 90%;
+  max-width: 400px;
+  padding: 1.5rem;
+  background-color: #2a2a3e;
+  /* Pixel art border - 3px width with darker outer border */
+  border: 3px solid #4f4f7f;
+  box-shadow: 
+    0 0 0 3px #1a1a2e,
+    5px 5px 0px #1a1a2e;
+  /* Additional pixel art decoration */
+  position: relative;
+  color: #e0e0e0;
+  text-align: center;
+  /* Animation for appearance */
+  animation: pixel-dialog-appear 0.2s ease-out;
+}
+
+/* Optional title styling */
+.dialog-title {
+  font-size: 1rem;
+  color: #f0a04b;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px dashed #4f4f7f;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Message content styling */
+.dialog-message {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #e0e0e0;
+  /* Word wrap for long messages */
+  word-break: break-word;
+  /* Text shadow for better readability */
+  text-shadow: 1px 1px 0px #1a1a2e;
+}
+
+/* Button styling to match the game's UI */
+.dialog-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.8rem;
+  background-color: #f0a04b;
+  border: 3px solid #b57937;
+  color: #1a1a2e;
+  cursor: pointer;
+  /* Pixel art box shadow */
+  box-shadow: 2px 2px 0px #1a1a2e;
+  transition: all 0.1s;
+  /* Make the button wider for better visibility */
+  min-width: 100px;
+}
+
+.dialog-button:hover {
+  background-color: #ff9248;
+  transform: translateY(-2px);
+}
+
+.dialog-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #1a1a2e;
+}
+
+/* Animation for dialog appearance */
+@keyframes pixel-dialog-appear {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+} 

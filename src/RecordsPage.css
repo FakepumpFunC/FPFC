@@ -1,0 +1,458 @@
+/* Records Page Styles */
+.records-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  gap: 2rem;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  color: #e0e0e0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Content wrapper for loading state management */
+.records-content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Loading overlay */
+.records-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.records-loading-content {
+  font-family: 'Press Start 2P', cursive;
+  color: #f0a04b;
+  text-shadow: 2px 2px 0px #000;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.records-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+  transition: opacity 0.3s ease;
+}
+
+.records-content.is-loading {
+  opacity: 0;
+}
+
+.records-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.records-title {
+  font-size: 2rem;
+  color: #f0a04b;
+  text-shadow: 2px 2px 0px #000000;
+  margin: 0;
+  font-family: 'Press Start 2P', cursive, monospace;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #4a7c8f;
+  color: #e0e0e0;
+  border: 2px solid #3a6c7f;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #1a1a2e;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  background-color: #5a8c9f;
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 0px #1a1a2e;
+}
+
+.back-button:active {
+  transform: translateY(1px);
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+/* Back image button styling */
+.back-image-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.back-image-button:hover {
+  background: transparent;
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  box-shadow: none;
+}
+
+.back-image-button:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.back-home-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 55px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.icon-small {
+  width: 18px;
+  height: 18px;
+}
+
+/* Performance Summary Panel */
+.performance-summary-panel {
+  background-color: rgba(42, 42, 62, 0.8);
+  border: 3px solid #4f4f7f;
+  box-shadow: 4px 4px 0px rgba(26, 26, 46, 0.7);
+  padding: 1.5rem;
+  border-radius: 4px;
+  width: 100%;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.4rem;
+  color: #c0c0e0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px dashed #4f4f7f;
+}
+
+.section-icon {
+  width: 24px;
+  height: 24px;
+  color: #7f7fd5;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #22223a;
+  border: 2px solid #3a3a5a;
+  border-radius: 3px;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #a0a0c0;
+}
+
+.metric-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.positive {
+  color: #5cb85c !important;
+}
+
+.negative {
+  color: #d9534f !important;
+}
+
+/* Trade History Panel */
+.trade-history-panel {
+  background-color: rgba(42, 42, 62, 0.8);
+  border: 3px solid #4f4f7f;
+  box-shadow: 4px 4px 0px rgba(26, 26, 46, 0.7);
+  padding: 1.5rem;
+  border-radius: 4px;
+  width: 100%;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.trade-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 2px solid #3a3a5a;
+  border-radius: 3px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.trade-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.trade-table th {
+  background-color: #22223a;
+  color: #c0c0e0;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 2px solid #3a3a5a;
+}
+
+.trade-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #3a3a5a;
+  color: #a0a0c0;
+}
+
+.trade-row {
+  transition: background-color 0.2s;
+}
+
+.trade-row:hover {
+  background-color: #2d2d45;
+}
+
+.buy-row {
+  background-color: rgba(92, 184, 92, 0.1);
+}
+
+.sell-row {
+  background-color: rgba(217, 83, 79, 0.1);
+}
+
+.buy-type {
+  color: #5cb85c;
+  font-weight: bold;
+}
+
+.sell-type {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+.numeric {
+  text-align: right;
+}
+
+.no-trades-message {
+  padding: 2rem;
+  text-align: center;
+  color: #a0a0c0;
+  font-style: italic;
+  background-color: #22223a;
+  border: 2px dashed #3a3a5a;
+  border-radius: 3px;
+}
+
+/* Data Management Section */
+.data-management-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.reset-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #d9534f;
+  color: #e0e0e0;
+  border: 2px solid #c9433f;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #1a1a2e;
+  transition: all 0.2s;
+}
+
+.reset-button:hover {
+  background-color: #f9635f;
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 0px #1a1a2e;
+}
+
+.reset-button:active {
+  transform: translateY(1px);
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+.reset-warning {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #d9534f;
+}
+
+.warning-icon {
+  width: 16px;
+  height: 16px;
+  color: #d9534f;
+}
+
+/* Confirmation Dialog */
+.confirm-dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirm-dialog {
+  background-color: #2a2a3e;
+  border: 3px solid #d9534f;
+  box-shadow: 6px 6px 0px #1a1a2e;
+  padding: 1.5rem;
+  border-radius: 4px;
+  max-width: 500px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.confirm-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.2rem;
+  color: #d9534f;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3a3a5a;
+}
+
+.confirm-message {
+  font-size: 0.9rem;
+  color: #c0c0e0;
+  line-height: 1.5;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.confirm-cancel {
+  background-color: #4a7c8f;
+  color: #e0e0e0;
+  border: 2px solid #3a6c7f;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+.confirm-proceed {
+  background-color: #d9534f;
+  color: #e0e0e0;
+  border: 2px solid #c9433f;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+.confirm-cancel:hover, .confirm-proceed:hover {
+  transform: translateY(-2px);
+  box-shadow: 2px 4px 0px #1a1a2e;
+}
+
+.confirm-cancel:active, .confirm-proceed:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px #1a1a2e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .records-page-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .records-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  .metric-value {
+    font-size: 1.1rem;
+  }
+}
+
+/* Fix scrollbars for tables */
+.trade-table-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.trade-table-container::-webkit-scrollbar-track {
+  background-color: #22223a;
+}
+
+.trade-table-container::-webkit-scrollbar-thumb {
+  background-color: #3a3a5a;
+  border-radius: 5px;
+}
+
+.trade-table-container::-webkit-scrollbar-thumb:hover {
+  background-color: #4f4f7f;
+} 

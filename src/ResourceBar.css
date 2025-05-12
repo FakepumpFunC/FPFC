@@ -1,0 +1,29 @@
+/* src/ResourceBar.css */
+.resource-bar-container {
+  width: calc(100% - 2rem); 
+  max-width: calc(700px - 2rem); 
+  margin: 0 auto 1.5rem auto; 
+  padding: 0.75rem 1rem;
+  background-color: #232338; 
+  border: 2px solid #4f4f7f; 
+  box-shadow: 2px 2px 0px #111122; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  font-size: 0.9rem; 
+}
+
+.resource-label {
+  color: #c0c0e0; 
+  margin-right: 0.5em;
+}
+
+.resource-value {
+  color: #f0a04b; 
+  font-weight: bold; 
+}
+
+.resource-value span { 
+  margin-left: 0.3em;
+} 

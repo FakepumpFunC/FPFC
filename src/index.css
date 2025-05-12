@@ -1,0 +1,308 @@
+:root {
+  font-family: 'Press Start 2P', system, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Full screen background settings */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling on body */
+}
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  color: #e0e0e0;
+  text-rendering: optimizeLegibility;
+  image-rendering: pixelated;
+  
+  /* Pixel art sunset cityscape background - Only show on non-home pages */
+  background: linear-gradient(to bottom, 
+    #2b0f44 0%, /* Deep purple at top */
+    #4a1a5b 15%, 
+    #6b2473 25%, 
+    #94306c 35%, 
+    #c6416c 45%, 
+    #e85a65 55%, 
+    #ff7559 65%, 
+    #ff9248 75%, 
+    #ffae38 85%, 
+    #ffc833 100%); /* Bright orange at bottom */
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* Add decorative city silhouette at the bottom - only on non-home pages */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35vh; /* Adjust height as needed */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" preserveAspectRatio="none"><path d="M0,300 L0,150 L20,150 L20,120 L40,120 L40,150 L60,150 L60,100 L80,100 L80,150 L100,150 L100,80 L120,80 L120,150 L140,150 L140,130 L160,130 L160,150 L180,150 L180,110 L200,110 L200,150 L220,150 L220,90 L240,90 L240,150 L260,150 L260,130 L280,130 L280,150 L300,150 L300,70 L320,70 L320,150 L340,150 L340,120 L360,120 L360,150 L380,150 L380,100 L400,100 L400,50 L420,50 L420,100 L440,100 L440,150 L460,150 L460,120 L480,120 L480,150 L500,150 L500,80 L520,80 L520,60 L540,60 L540,80 L560,80 L560,150 L580,150 L580,130 L600,130 L600,150 L620,150 L620,110 L640,110 L640,40 L660,40 L660,110 L680,110 L680,150 L700,150 L700,90 L720,90 L720,150 L740,150 L740,120 L760,120 L760,150 L780,150 L780,100 L800,100 L800,30 L820,30 L820,100 L840,100 L840,150 L860,150 L860,130 L880,130 L880,150 L900,150 L900,110 L920,110 L920,150 L940,150 L940,90 L960,90 L960,150 L980,150 L980,120 L1000,120 L1000,300 Z" fill="%23230f35"/></svg>');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none; /* Allow interaction with elements below */
+  z-index: 5; /* Between main content and panels */
+}
+
+/* Add building windows effect - only on non-home pages */
+body::before {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35vh;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" preserveAspectRatio="none"><g fill="%23f0a04b"><rect x="30" y="130" width="5" height="5"/><rect x="45" y="125" width="5" height="5"/><rect x="70" y="110" width="5" height="5"/><rect x="75" y="130" width="5" height="5"/><rect x="110" y="100" width="5" height="5"/><rect x="105" y="120" width="5" height="5"/><rect x="150" y="140" width="5" height="5"/><rect x="190" y="120" width="5" height="5"/><rect x="230" y="100" width="5" height="5"/><rect x="270" y="140" width="5" height="5"/><rect x="310" y="80" width="5" height="5"/><rect x="305" y="110" width="5" height="5"/><rect x="350" y="130" width="5" height="5"/><rect x="390" y="110" width="5" height="5"/><rect x="410" y="70" width="5" height="5"/><rect x="430" y="110" width="5" height="5"/><rect x="470" y="130" width="5" height="5"/><rect x="510" y="90" width="5" height="5"/><rect x="530" y="70" width="5" height="5"/><rect x="550" y="100" width="5" height="5"/><rect x="590" y="140" width="5" height="5"/><rect x="630" y="130" width="5" height="5"/><rect x="650" y="60" width="5" height="5"/><rect x="655" y="80" width="5" height="5"/><rect x="690" y="100" width="5" height="5"/><rect x="710" y="110" width="5" height="5"/><rect x="750" y="130" width="5" height="5"/><rect x="790" y="120" width="5" height="5"/><rect x="810" y="50" width="5" height="5"/><rect x="830" y="70" width="5" height="5"/><rect x="850" y="130" width="5" height="5"/><rect x="870" y="140" width="5" height="5"/><rect x="910" y="120" width="5" height="5"/><rect x="950" y="100" width="5" height="5"/><rect x="990" y="130" width="5" height="5"/></g></svg>');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 6;
+}
+
+a {
+  font-weight: 500;
+  color: #f0a04b;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #ff9b85;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* Button and input styles */
+button, input {
+  font-family: 'Press Start 2P', cursive;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+input[type="text"] {
+  background-color: #2a2a3e;
+  color: #e0e0e0;
+  border-color: #4f4f7f;
+  padding: 10px 15px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #7f7fd5;
+  box-shadow: 2px 2px 0px #000000, 0 0 0 2px #7f7fd5;
+}
+
+button {
+  border-radius: 0;
+  border: 2px solid #000000;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #4a7c8f;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+button:hover {
+  background-color: #5a9cb0;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.icon-style {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  margin-right: 0.4em;
+}
+
+/* Root container - the only scrollable element */
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  /* Proper padding to ensure content is visible below fixed elements */
+  padding-bottom: 2rem;
+}
+
+/* Custom scrollbar styling - pixel art theme */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2a2a3e;
+  border-left: 2px solid #4f4f7f;
+  /* Pixel pattern for track */
+  background-image: 
+    linear-gradient(to bottom, #3a3a5a 2px, transparent 2px),
+    linear-gradient(to bottom, #3a3a5a 2px, transparent 2px);
+  background-size: 4px 8px;
+  background-position: 0 0, 4px 4px;
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f0a04b;
+  border: 2px solid #2a2a3e;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  /* Pixel pattern for thumb */
+  background-image: 
+    linear-gradient(45deg, #ff9248 25%, transparent 25%),
+    linear-gradient(-45deg, #ff9248 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ff9248 75%),
+    linear-gradient(-45deg, transparent 75%, #ff9248 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ff9248;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f0a04b #2a2a3e;
+}
+
+/* Ensure all elements respect their container boundaries */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  body::after, body::before {
+    height: 25vh; /* Smaller cityscape on mobile */
+  }
+  
+  .game-title {
+    font-size: 1.5rem; /* Smaller title on mobile */
+  }
+  
+  button {
+    font-size: 0.8em; /* Smaller buttons on mobile */
+    padding: 0.5em 1em;
+  }
+  
+  input[type="text"] {
+    font-size: 0.8em; /* Smaller input on mobile */
+    padding: 8px 12px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 12px; /* Smaller scrollbar on mobile */
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  body::after, body::before {
+    height: 20vh; /* Even smaller cityscape on very small devices */
+  }
+  
+  .game-title {
+    font-size: 1.2rem; /* Even smaller title on very small devices */
+  }
+  
+  #root {
+    padding-top: 60px; /* Adjust for smaller header on very small devices */
+  }
+}
+
+/* Ensure scrollbar is always at the far right edge */
+html, body, #root, .homepage-layout-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Prevent all content overflow except for #root which is our scrollable container */
+body, html {
+  overflow: hidden;
+}
+
+#root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Override the default gradient and silhouette styles for the home page specifically */
+/* Using a class-based approach rather than :has() for better browser compatibility */
+.homepage-body-background {
+  background: none !important;
+  background-attachment: fixed !important;
+}
+
+/* Ensure the fixed background works correctly */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Root container - the only scrollable element */
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  /* Proper padding to ensure content is visible below fixed elements */
+  padding-bottom: 2rem;
+}
