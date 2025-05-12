@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/tite2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 添加缓存控制元标签，防止浏览器缓存 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -34,6 +38,26 @@
         background-image: url('/assets/TradingRecords.png') !important;
       }
     </style>
+    <!-- 添加处理EVM冲突的脚本 -->
+    <script>
+      // 保存原始ethereum对象（如果存在）
+      if (window.ethereum) {
+        window._originalEthereum = window.ethereum;
+      }
+      
+      // 防止ethereum属性被重复定义
+      Object.defineProperty(window, 'ethereum', {
+        // 获取当前值或原始值
+        get: function() { 
+          return window._ethereum || window._originalEthereum;
+        },
+        // 允许修改
+        set: function(val) {
+          window._ethereum = val;
+        },
+        configurable: true
+      });
+    </script>
     <!-- Buffer polyfill for Solana wallet integration -->
     <script>
       window.global = window;
@@ -59,5 +83,24 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- 添加清除缓存的脚本 -->
+    <script>
+      // 强制刷新缓存
+      if (performance.navigation.type === 1) { // 如果是页面刷新
+        // 添加随机查询参数来避免使用缓存
+        const links = document.querySelectorAll('link[rel="stylesheet"]');
+        const scripts = document.querySelectorAll('script[src]');
+        
+        const timestamp = Date.now();
+        [...links, ...scripts].forEach(el => {
+          if (el.href && !el.href.includes('google')) {
+            el.href = el.href + (el.href.includes('?') ? '&' : '?') + 'v=' + timestamp;
+          }
+          if (el.src && !el.src.includes('google')) {
+            el.src = el.src + (el.src.includes('?') ? '&' : '?') + 'v=' + timestamp;
+          }
+        });
+      }
+    </script>
   </body>
 </html>
