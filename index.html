@@ -34,6 +34,27 @@
         background-image: url('/assets/TradingRecords.png') !important;
       }
     </style>
+    <!-- Buffer polyfill for Solana wallet integration -->
+    <script>
+      window.global = window;
+      // Create a simple Buffer polyfill
+      window.Buffer = window.Buffer || {
+        from: function(data, encoding) {
+          if (encoding === 'hex') {
+            return Array.from(data.match(/.{1,2}/g) || [], byte => parseInt(byte, 16));
+          }
+          return Array.from(data);
+        },
+        alloc: function(size) {
+          return new Uint8Array(size);
+        },
+        isBuffer: function() {
+          return false;
+        }
+      };
+    </script>
+    <!-- Load buffer-polyfill.js for production -->
+    <script src="/buffer-polyfill.js"></script>
   </head>
   <body>
     <div id="root"></div>

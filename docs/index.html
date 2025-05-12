@@ -34,22 +34,31 @@
         background-image: url('/assets/TradingRecords.png') !important;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-B0gxhfGN.js"></script>
+    <!-- Buffer polyfill for Solana wallet integration -->
+    <script>
+      window.global = window;
+      // Create a simple Buffer polyfill
+      window.Buffer = window.Buffer || {
+        from: function(data, encoding) {
+          if (encoding === 'hex') {
+            return Array.from(data.match(/.{1,2}/g) || [], byte => parseInt(byte, 16));
+          }
+          return Array.from(data);
+        },
+        alloc: function(size) {
+          return new Uint8Array(size);
+        },
+        isBuffer: function() {
+          return false;
+        }
+      };
+    </script>
+    <!-- Load buffer-polyfill.js for production -->
+    <script src="/buffer-polyfill.js"></script>
+    <script type="module" crossorigin src="/assets/index-DgInH4WV.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D5OQ2G4g.css">
   </head>
   <body>
     <div id="root"></div>
-    
-    <!-- GitHub Pages SPA路由支持脚本 -->
-    <script>
-      // 仅在直接导航到页面时运行，不在初始加载index.html时运行
-      (function() {
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
-    </script>
   </body>
 </html>

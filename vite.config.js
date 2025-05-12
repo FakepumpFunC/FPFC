@@ -1,14 +1,27 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    nodePolyfills(),
+  ],
   // Configure base path for custom domain (root path)
   base: '/',
   // Configure build output to 'docs' directory for GitHub Pages
   build: {
     outDir: 'docs',
+  },
+  resolve: {
+    alias: {
+      buffer: 'buffer',
+    },
+  },
+  define: {
+    'global': {},
+    'process.env': {},
   },
   server: {
     proxy: {

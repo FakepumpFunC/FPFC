@@ -14,7 +14,6 @@ import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
 import { 
   SolflareWalletAdapter,
-  LedgerWalletAdapter,
   TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets'
 
@@ -79,7 +78,6 @@ function App() {
   const wallets = useMemo(() => [
     // 不要添加PhantomWalletAdapter，因为它已经被注册为标准钱包
     new SolflareWalletAdapter(),
-    new LedgerWalletAdapter(),
     new TorusWalletAdapter(),
   ], [network]);
 
