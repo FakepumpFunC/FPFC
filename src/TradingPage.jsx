@@ -575,7 +575,7 @@ function TradingPage({ showPixelDialog }) {
             <h1>{tokenData.name} <span className="token-symbol">({tokenData.symbol})</span></h1>
             <button 
               className="back-button back-image-button"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/home')}
             >
               <img src="/assets/Back.png" alt="Back to Home" className="back-home-image" />
             </button>
