@@ -12,7 +12,11 @@ import './App.css'
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
-import { SolflareWalletAdapter } from '@solana/wallet-adapter-wallets'
+import { 
+  SolflareWalletAdapter,
+  LedgerWalletAdapter,
+  TorusWalletAdapter,
+} from '@solana/wallet-adapter-wallets'
 
 // Add console log to verify imports
 console.log('App component loaded', { RecordsPage });
@@ -73,8 +77,10 @@ function App() {
 
   // Memoize the list of wallet adapters to support
   const wallets = useMemo(() => [
-    new SolflareWalletAdapter(), // Solflare wallet
-    // Add more wallets here if needed
+    // 不要添加PhantomWalletAdapter，因为它已经被注册为标准钱包
+    new SolflareWalletAdapter(),
+    new LedgerWalletAdapter(),
+    new TorusWalletAdapter(),
   ], [network]);
 
   return (
