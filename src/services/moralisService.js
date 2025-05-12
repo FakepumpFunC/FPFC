@@ -56,10 +56,11 @@ export const fetchBirdeyeTokenPrice = async (contractAddress, forceRefresh = fal
     
     // Send request to Birdeye API using the Vite proxy
     // Using the correct endpoint from the documentation
-    const response = await fetch(`/api/birdeye/defi/price?address=${contractAddress}`, {
+    const response = await fetch(`https://public-api.birdeye.so/defi/price?address=${contractAddress}`, {
       headers: {
+        'X-API-KEY': 'a1373453dfe44a7f9286911dcca3d763',
         'Accept': 'application/json',
-        // The API key should be handled by the proxy
+        'Content-Type': 'application/json'
       }
     });
     
@@ -192,8 +193,8 @@ export const fetchAveTokenPrice = async (contractAddress) => {
     const requestOptions = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
-        // Note: x-api-key is added by the proxy
+        'Content-Type': 'application/json',
+        'x-api-key': '0H7NicjOftzKAEUF4WeUbSUm0Jct3OFv5q6jNHOW0Gf1NAZrOazfKGY7zJR4Eaft'
       },
       body: JSON.stringify({
         token_ids: [tokenId]
@@ -208,7 +209,7 @@ export const fetchAveTokenPrice = async (contractAddress) => {
     }));
 
     // Send request to Ave.ai API using the Vite proxy
-    const response = await fetch('/api/ave/v2/tokens/price', requestOptions);
+    const response = await fetch('https://prod.ave-api.com/v2/tokens/price', requestOptions);
     
     // Log the response status
     console.log('Ave.ai API response status:', response.status);
