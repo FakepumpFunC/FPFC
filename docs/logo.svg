@@ -1,0 +1,19 @@
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo-text { 
+      fill: #FFD54F; 
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 80px;
+    }
+    .logo-bg {
+      fill: #1A237E;
+    }
+    .rocket {
+      fill: #FF7043;
+    }
+  </style>
+  <rect class="logo-bg" x="10" y="30" width="780" height="140" rx="10" />
+  <text class="logo-text" x="30" y="130">FakePumpFun</text>
+  <polygon class="rocket" points="750,120 770,100 790,120 770,140" />
+</svg> 

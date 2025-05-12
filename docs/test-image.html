@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片测试</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        img {
+            max-width: 90%;
+            border: 2px solid white;
+            margin: 20px auto;
+            display: block;
+        }
+        .background-test {
+            width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid white;
+            background-image: url('/assets/home3.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>图片测试页面</h1>
+    
+    <h2>作为IMG标签显示:</h2>
+    <img src="/assets/home3.png" alt="Home3 Image">
+    
+    <h2>作为背景图显示:</h2>
+    <div class="background-test"></div>
+    
+    <h2>其他路径测试:</h2>
+    <div>
+        <p>相对路径:</p>
+        <img src="./assets/home3.png" alt="相对路径" style="max-height: 150px;">
+    </div>
+</body>
+</html> 
