@@ -40,23 +40,37 @@
     </style>
     <!-- 添加处理EVM冲突的脚本 -->
     <script>
-      // 保存原始ethereum对象（如果存在）
-      if (window.ethereum) {
-        window._originalEthereum = window.ethereum;
-      }
-      
-      // 防止ethereum属性被重复定义
-      Object.defineProperty(window, 'ethereum', {
-        // 获取当前值或原始值
-        get: function() { 
-          return window._ethereum || window._originalEthereum;
-        },
-        // 允许修改
-        set: function(val) {
-          window._ethereum = val;
-        },
-        configurable: true
-      });
+      // More robust EVM conflict handling
+      (function() {
+        try {
+          // Save original ethereum object if it exists
+          if (window.ethereum) {
+            window._originalEthereum = window.ethereum;
+          }
+          
+          // Check if ethereum is already defined with a getter/setter
+          const descriptor = Object.getOwnPropertyDescriptor(window, 'ethereum');
+          
+          // Only define our property if it doesn't already have a getter/setter
+          if (!descriptor || (descriptor.configurable && !descriptor.get)) {
+            Object.defineProperty(window, 'ethereum', {
+              get: function() { 
+                return window._ethereum || window._originalEthereum || null;
+              },
+              set: function(val) {
+                // Don't overwrite if we already have a value and the new value is undefined
+                if (window._ethereum && val === undefined) return;
+                window._ethereum = val;
+              },
+              configurable: true
+            });
+          }
+          
+          console.log('EVM conflict handler initialized');
+        } catch (err) {
+          console.warn('Failed to initialize EVM conflict handler:', err);
+        }
+      })();
     </script>
     <!-- Buffer polyfill for Solana wallet integration -->
     <script>
