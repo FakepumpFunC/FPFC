@@ -75,6 +75,11 @@ function TopNavBar({ showPixelDialog, showDonateModal }) {
     }
   };
 
+  // Handle social media click
+  const handleSocialMediaClick = () => {
+    window.open('https://x.com/FakePumpFun', '_blank');
+  };
+
   return (
     <nav className="top-nav-bar">
       <div className="nav-section nav-left">
@@ -111,6 +116,17 @@ function TopNavBar({ showPixelDialog, showDonateModal }) {
       </div>
 
       <div className="nav-section nav-right">
+        <button 
+          className="social-media-btn" 
+          onClick={handleSocialMediaClick}
+          aria-label="Visit our X/Twitter page"
+        >
+          <img 
+            src="/assets/Floow.png" 
+            alt="Follow us on X/Twitter" 
+            className="social-media-icon" 
+          />
+        </button>
         <button 
           className={`connect-wallet-btn${connected ? ' connected' : ''}`} 
           onClick={handleConnectWallet}

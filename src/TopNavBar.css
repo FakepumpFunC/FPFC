@@ -108,6 +108,36 @@
 .nav-right {
   margin-left: auto;
   justify-content: flex-end;
+  gap: 0.75rem; /* Add gap between buttons in nav-right */
+}
+
+/* Social Media Button Styles */
+.social-media-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background-color: transparent;
+  border: 2px solid #4f4f7f;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.social-media-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.social-media-btn:active {
+  transform: scale(0.95);
+}
+
+.social-media-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  image-rendering: pixelated; /* Keep pixel art style */
 }
 
 .connect-wallet-btn {
