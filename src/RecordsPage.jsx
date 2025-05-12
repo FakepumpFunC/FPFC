@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, ChartBarIcon, ArrowPathIcon, ExclamationTriangleIcon, ClockIcon } from '@heroicons/react/24/solid';
-import { getGameState, subscribe, resetGameState } from './gameState';
+import { ChartBarIcon, ClockIcon } from '@heroicons/react/24/solid';
+import { getGameState, subscribe } from './gameState';
 import './RecordsPage.css';
 
 console.log('RecordsPage module loaded');
 
-function RecordsPage({ showPixelDialog }) {
+function RecordsPage() {
   console.log('RecordsPage component rendering');
   const navigate = useNavigate();
   const [tradeHistory, setTradeHistory] = useState([]);
-  const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
   // Add loading state
   const [isLoading, setIsLoading] = useState(true);
   // Add state for performance metrics
@@ -22,7 +21,7 @@ function RecordsPage({ showPixelDialog }) {
     totalTrades: 0,
     buyCount: 0,
     sellCount: 0,
-    buySellRatio: '0/0'
+    buySellRatio: '0:0'
   });
   
   // Get initial trade history and subscribe to changes
@@ -84,32 +83,10 @@ function RecordsPage({ showPixelDialog }) {
     return parseFloat(value).toFixed(2);
   };
   
-  // Format date for display
+  // Format date and time
   const formatDateTime = (timestamp) => {
     const date = new Date(timestamp);
-    return date.toLocaleString([], {
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
-  
-  // Handle reset game state
-  const handleResetGameState = () => {
-    setIsResetConfirmOpen(true);
-  };
-  
-  // Confirm reset
-  const confirmReset = () => {
-    resetGameState();
-    setIsResetConfirmOpen(false);
-    showPixelDialog('Reset Complete', 'All game data has been reset!');
-  };
-  
-  // Cancel reset
-  const cancelReset = () => {
-    setIsResetConfirmOpen(false);
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
   };
   
   // Sorted trade history with newest first
@@ -251,49 +228,9 @@ function RecordsPage({ showPixelDialog }) {
           
           {/* Reset Button */}
           <section className="data-management-section">
-            <button 
-              className="reset-button"
-              onClick={handleResetGameState}
-            >
-              <ArrowPathIcon className="icon-small" />
-              Reset All Data
-            </button>
-            <p className="reset-warning">
-              <ExclamationTriangleIcon className="warning-icon" />
-              Warning: This will delete all your trading data and reset your balance!
-            </p>
           </section>
         </div>
       </main>
-      
-      {/* Reset Confirmation Dialog */}
-      {isResetConfirmOpen && (
-        <div className="confirm-dialog-backdrop">
-          <div className="confirm-dialog">
-            <h3 className="confirm-title">
-              <ExclamationTriangleIcon className="warning-icon" />
-              Confirm Reset
-            </h3>
-            <p className="confirm-message">
-              Are you sure you want to reset all game data? This action cannot be undone.
-            </p>
-            <div className="confirm-buttons">
-              <button 
-                className="confirm-cancel"
-                onClick={cancelReset}
-              >
-                Cancel
-              </button>
-              <button 
-                className="confirm-proceed"
-                onClick={confirmReset}
-              >
-                Yes, Reset Everything
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

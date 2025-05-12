@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRightIcon, BeakerIcon, ChartBarIcon, CogIcon, QuestionMarkCircleIcon, CurrencyDollarIcon, ShieldExclamationIcon, ChartBarSquareIcon, TrophyIcon, ClockIcon, ArrowsRightLeftIcon, WalletIcon as WalletIconSolid, ListBulletIcon, Cog6ToothIcon } from '@heroicons/react/24/solid';
-import { getGameState, subscribe, resetGameState } from './gameState'; // Import from gameState
+import { getGameState, subscribe } from './gameState'; // Import from gameState
 import './HomePage.css';
 // 导入背景图片
 import homeBackground from './assets/home3.png';
@@ -162,15 +162,9 @@ function HomePage({ showPixelDialog }) {
     return value.toFixed(2);
   };
 
-  // Handle game state reset
-  const handleResetGame = () => {
-    resetGameState();
-    alert('Game state has been reset!');
-  };
-
   // Format percentage for display
   const formatPercentage = (value) => {
-    return parseFloat(value).toFixed(1);
+    return value.toFixed(2);
   };
 
   // Determine if a value is positive (for styling)
@@ -275,9 +269,6 @@ function HomePage({ showPixelDialog }) {
 
         <footer className="homepage-footer">
           <p>© {new Date().getFullYear()} FakePumpFun Devs. Simulation only. Play responsibly!</p>
-          <button className="devtool-button" onClick={handleResetGame}>
-            Devtool: Reset Game
-          </button>
         </footer>
       </div>
 
